@@ -6,8 +6,8 @@ import { fetchAvailablePlaces } from "../http.js"; // data fetching function
 
 export default function AvailablePlaces({ onSelectPlace }) {
   const [dataIsFetching, setDataIsFetching] = useState(false);
-  const [availablePlaces, setAvailablePlaces] = useState([]);
   const [error, setError] = useState();
+  const [availablePlaces, setAvailablePlaces] = useState([]);
 
   const fetchPlaces = async () => {
     setDataIsFetching(true);
@@ -15,7 +15,6 @@ export default function AvailablePlaces({ onSelectPlace }) {
       const places = await fetchAvailablePlaces();
 
       navigator.geolocation.getCurrentPosition((position) => {
-       
         const sortedPlaces = sortPlacesByDistance(
           places,
           position.coords.latitude,
